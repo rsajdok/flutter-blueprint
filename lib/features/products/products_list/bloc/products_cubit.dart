@@ -5,17 +5,14 @@ import 'package:flutter_blueprint/features/products/products_list/domain/use_cas
 
 class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit({
-    //required ProductBlRepository productsRepository,
     required FetchProductsUseCase getProductsUseCase,
   })  : _getProductsUseCase = getProductsUseCase,
-        //_productsRepository = productsRepository,
         super(
           const ProductsState(
             status: ProductsStatus.initial(),
           ),
         );
 
-  // final ProductBlRepository _productsRepository;
   final FetchProductsUseCase _getProductsUseCase;
 
   Future<void> fetchProducts() async {
@@ -25,7 +22,6 @@ class ProductsCubit extends Cubit<ProductsState> {
           status: ProductsStatus.loading(),
         ),
       );
-      // final products = await _productsRepository.fetchProductsList();
       final products = await _getProductsUseCase.fetchProducts();
       emit(
         ProductsState(

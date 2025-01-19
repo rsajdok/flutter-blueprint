@@ -7,7 +7,6 @@ import 'package:flutter_blueprint/features/products/products_list/data/service/t
 import 'package:flutter_blueprint/features/products/products_list/domain/model/product.dart';
 
 class FakeApiService {
-  // implements ProductBlRepository {
   FakeApiService({
     this.addDelay = true,
   });
