@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blueprint/core/exceptions/route_exception.dart';
-import 'package:flutter_blueprint/features/counter/presentation/counter_page.dart';
+import 'package:flutter_blueprint/features/products/products_list/view/products_list_screen_bl.dart';
 
 class AppRouter {
   static const String counter = 'counter';
@@ -11,7 +11,7 @@ class AppRouter {
     switch (settings.name) {
       case counter:
         return MaterialPageRoute(
-          builder: (_) => CounterScreen(),
+          builder: (_) => ProductsListScreenBl(), // CounterScreen(),
         );
       default:
         throw const RouteException('Route not found!');

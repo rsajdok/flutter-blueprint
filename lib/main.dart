@@ -3,13 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blueprint/app_bloc_observer.dart';
 import 'package:flutter_blueprint/app_router.dart';
 import 'package:flutter_blueprint/core/themes/app_theme.dart';
+import 'package:flutter_blueprint/di/configure.dart';
 import 'package:flutter_blueprint/features/theme/cubit/theme_cubit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
 
-  runApp(const App());
+  setupDependencies();
+
+  runApp(
+    const App(),
+  );
 }
 
 class App extends StatelessWidget {
@@ -24,7 +29,7 @@ class App extends StatelessWidget {
         ),
         // BlocProvider<CounterCubit>( create: (context) => CounterCubit(),),
       ],
-      child: HomePage(
+      child: MainPage(
         title: 'Flutter blueprint',
       ),
     );
@@ -43,24 +48,19 @@ class App extends StatelessWidget {
   }
   */
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+class MainPage extends StatefulWidget {
+  const MainPage({
+    super.key,
+    required this.title,
+  });
 
   final String title;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
@@ -88,7 +88,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             //return Sizer(builder: (context, constraints, orientation) {
             return MaterialApp(
               // builder: DevicePreview.appBuilder,
-              // title: Strings.appTitle,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: context.select(
@@ -97,39 +96,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               initialRoute: AppRouter.counter,
               onGenerateRoute: AppRouter.onGenerateRoute,
             );
-            // },);
           },
         );
       },
     );
   }
-
-  /*
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-  */
 }
