@@ -1,12 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infinite_list/features/posts/domain/post.dart';
+import 'package:infinite_list/features/posts/domain/repository/post_repository.dart';
 import 'package:infinite_list/features/posts/presentaton/bloc/post_event.dart';
 import 'package:infinite_list/features/posts/presentaton/bloc/post_state.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
-import 'dart:convert';
 
-const _postLimit = 10;
 // const throttleDuration = Duration(milliseconds: 100);
 
 /*
@@ -18,7 +16,9 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
 */
 
 class PostBloc extends Bloc<PostEvent, PostState> {
-  PostBloc({required this.httpClient}) : super(const PostState()) {
+  PostBloc({required this.httpClient, required posttRepository})
+    : _productRepository = posttRepository,
+      super(const PostState()) {
     on<PostFetched>(
       _onFetched,
       // transformer: throttleDroppable(throttleDuration),
@@ -26,12 +26,16 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   }
 
   final http.Client httpClient;
+  final PostRepository _productRepository;
 
   Future<void> _onFetched(PostFetched event, Emitter<PostState> emit) async {
     if (state.hasReachedMax) return;
 
     try {
-      final posts = await _fetchPosts(startIndex: state.posts.length);
+      // final posts = await _fetchPosts(startIndex: state.posts.length);
+      final posts = await _productRepository.fetchPosts(
+        startIndex: state.posts.length,
+      );
 
       if (posts.isEmpty) {
         return emit(state.copyWith(hasReachedMax: true));
@@ -48,6 +52,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     }
   }
 
+  /*
   Future<List<Post>> _fetchPosts({required int startIndex}) async {
     final response = await httpClient.get(
       Uri.https('jsonplaceholder.typicode.com', '/posts', <String, String>{
@@ -68,9 +73,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     }
     throw Exception('error fetching posts');
   }
-}
 
-/*
   Future<List<String>> _fetchData(int page, int limit) async {
     // Simulate network call
     await Future.delayed(Duration(seconds: 2));
@@ -80,4 +83,5 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       (index) => 'Item ${(page - 1) * limit + index + 1}',
     );
   }
-*/
+  */
+}

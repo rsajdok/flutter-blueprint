@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:infinite_list/features/posts/domain/post.dart';
+import 'package:infinite_list/features/posts/domain/model/post.dart';
 
 enum PostStatus { initial, success, failure }
 
