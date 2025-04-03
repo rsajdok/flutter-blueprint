@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_list/features/posts/domain/repository/post_repository.dart';
-import 'package:infinite_list/features/posts/presentaton/bloc/post_event.dart';
-import 'package:infinite_list/features/posts/presentaton/bloc/post_state.dart';
+import 'package:infinite_list/features/posts/presentation/bloc/post_event.dart';
+import 'package:infinite_list/features/posts/presentation/bloc/post_state.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 

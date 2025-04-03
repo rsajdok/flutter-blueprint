@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infinite_list/features/posts/presentaton/bloc/post_bloc.dart';
-import 'package:infinite_list/features/posts/presentaton/bloc/post_event.dart';
-import 'package:infinite_list/features/posts/presentaton/bloc/post_state.dart';
-import 'package:infinite_list/features/posts/presentaton/view/widgets/bottom_loader.dart';
-import 'package:infinite_list/features/posts/presentaton/view/widgets/post_list_item.dart';
+import 'package:infinite_list/features/posts/presentation/bloc/post_bloc.dart';
+import 'package:infinite_list/features/posts/presentation/bloc/post_event.dart';
+import 'package:infinite_list/features/posts/presentation/bloc/post_state.dart';
+import 'package:infinite_list/features/posts/presentation/view/widgets/bottom_loader.dart';
+import 'package:infinite_list/features/posts/presentation/view/widgets/post_list_item.dart';
 
 class PostsList extends StatefulWidget {
   const PostsList({super.key});

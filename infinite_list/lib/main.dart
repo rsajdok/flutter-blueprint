@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:infinite_list/features/posts/presentaton/view/posts_page.dart';
-import 'package:infinite_list/features/posts/presentaton/view/widgets/posts_list.dart';
+import 'package:infinite_list/features/posts/presentation/view/posts_page.dart';
+import 'package:infinite_list/features/posts/presentation/view/widgets/posts_list.dart';
 
 void main() {
   runApp(const MyApp());
