@@ -18,7 +18,7 @@ class PostsPage extends StatelessWidget {
         create:
             (_) => PostBloc(
               httpClient: http.Client(),
-              posttRepository: AppPostRepository(
+              postRepository: AppPostRepository(
                 remoteDataSource: NetworkPostRepository(ApiService()),
               ),
             )..add(PostFetched()),
