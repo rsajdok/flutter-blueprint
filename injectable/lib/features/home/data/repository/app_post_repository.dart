@@ -9,4 +9,10 @@ class AppPostRepository implements PostRepository {
     debugPrint('Action performed in AppPostRepository');
     return Future.value(true);
   }
+
+  @override
+  Future<String> getPost() async {
+    debugPrint('Get post in AppPostRepository');
+    return Future.value('Post from AppPostRepository');
+  }
 }

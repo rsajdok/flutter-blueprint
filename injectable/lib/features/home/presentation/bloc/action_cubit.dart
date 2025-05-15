@@ -18,4 +18,10 @@ class ActionCubit extends Cubit<ActionState> {
       emit(ActionStatePush());
     }
   }
+
+  void getPost() async {
+    final post = await _repository.getPost();
+    debugPrint('Get post in ActionCubit: $post');
+    emit(ActionStatePost(post));
+  }
 }

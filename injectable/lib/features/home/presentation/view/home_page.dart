@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/features/home/presentation/bloc/action_cubit.dart';
 import 'package:injectable/features/home/presentation/bloc/action_state.dart';
+import 'package:injectable/features/home/presentation/view/your_widget.dart';
 import 'package:injectable/features/profile/presentation/profile_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -36,6 +37,7 @@ class HomePage extends StatelessWidget {
                 },
                 child: Text('Let\'s go!'),
               ),
+              YourWidget(),
             ],
           ),
         ),

@@ -9,6 +9,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   diInit();
+
   runApp(const MyApp());
 }
 
@@ -22,8 +23,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+      // home: const HomePage(),
+      /*
       home: BlocProvider(
         create: (context) => GetIt.instance<ActionCubit>(),
+        child: const HomePage(),
+      ),
+      */
+      home: BlocProvider.value(
+        value: GetIt.instance<ActionCubit>(),
         child: HomePage(),
       ),
     );
