@@ -5,6 +5,24 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Congrats!')));
+    return Scaffold(
+      key: const Key('profilePageKey'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Congrats!'),
+            SizedBox(height: 20),
+            ElevatedButton(
+              key: const Key('elevatedButtonKey1'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Back to Home'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

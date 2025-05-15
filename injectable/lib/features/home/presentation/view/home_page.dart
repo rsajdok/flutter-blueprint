@@ -10,10 +10,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final myCubit = GetIt.instance<MyCubit>();
     final cubit = GetIt.instance<ActionCubit>();
     return Scaffold(
       body: BlocListener<ActionCubit, ActionState>(
         listener: (context, state) {
+          debugPrint('State home: $state');
           if (state is ActionStatePush) {
             Navigator.push(
               context,
@@ -23,10 +25,12 @@ class HomePage extends StatelessWidget {
         },
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Welcome'),
+              SizedBox(height: 20),
               ElevatedButton(
+                key: const Key('elevatedButtonKey1'),
                 onPressed: () {
                   cubit.action();
                 },

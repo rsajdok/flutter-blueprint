@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/features/home/domain/repository/post_repository.dart';
 import 'package:injectable/features/home/presentation/bloc/action_state.dart';
@@ -13,6 +14,7 @@ class ActionCubit extends Cubit<ActionState> {
     final result = await _repository.action();
 
     if (result) {
+      debugPrint('Action performed in ActionCubit');
       emit(ActionStatePush());
     }
   }
